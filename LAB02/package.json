@@ -1,5 +1,15 @@
 {
   "dependencies": {
     "prompt": "^1.3.0"
-  }
+  },
+  "name": "lab2",
+  "version": "1.0.0",
+  "description": "lab2 package",
+  "main": "lab2.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vlad Berest",
+  "license": "ISC"
 }

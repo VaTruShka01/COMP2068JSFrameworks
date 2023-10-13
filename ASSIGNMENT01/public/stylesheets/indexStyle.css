@@ -1,0 +1,98 @@
+body {
+    background-image: url("../images/binary-code-background-footage-064575305_iconl.webp");
+    
+}
+
+h1, h2 {
+    font-size: 100px;
+    font-weight: bold;
+    font-family: 'Rubik Mono One', sans-serif;
+    text-align: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: url(../images/istockphoto-1093112310-612x612.jpg);
+    background-color: whitesmoke;
+    margin:20px ;
+
+}
+
+h2 {
+    font-size: 50px;
+}
+
+.intro {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary{
+    border-radius: 20px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.688);
+    color: rgb(204, 204, 204);
+    top: 0;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    margin: 10px;
+}
+
+.summary>p {
+    /* child combinator */
+    margin-bottom: 20px;
+    padding: 0rem 2rem;
+    text-align: center;
+}
+
+.links a{
+    margin-bottom: 20px ;
+}
+
+.summary p:nth-child(3) a {
+    /*attribute selector*/
+    text-decoration: none;
+    color: inherit;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.summary p:nth-child(3) a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.summary p:nth-child(3) a:active {
+    background-color: rgb(185, 184, 184);
+}
+
+.summary a img {
+    margin-right: 7px;
+    width: 35px;
+    margin-bottom: -15px;
+}
+
+ion-icon {
+    font-size: 30px;
+    margin-bottom: -9px;
+}
+
+@media screen and (max-width: 500px ){
+    .links{
+        display: flex;
+        flex-direction: column;
+    }
+    h1 {
+        font-size: 50px;
+    }
+    h2{
+        font-size: 30px;
+    }
+
+    .intro{
+        
+    }
+}
+

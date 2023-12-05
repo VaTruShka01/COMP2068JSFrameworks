@@ -1,19 +1,41 @@
 <h1>{{title}}</h1>
 <div>
 
-<table>
-    <thead>
-        <th>What you ate today?</th>
-        <th>Date</th>
-        <th>Distance ran today</th>
-        <th>Calories ate</th>
-        <th>Calories burnt</th>
-    </thead>
+<table class="table table-dark table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Breakfast 🥞</th>
+      <th scope="col">Lunch 🍔</th>
+      <th scope="col">Dinner 🥗</th>
+      <th scope="col">Distance ran 🏃</th>
+      <th scope="col">Calories Ate 😋</th>
+      <th scope="col">Calories Burnt 🏋️</th>
+      <th scope="col">Date 📅</th>
+      
+    </tr>
+  </thead>
+  <tbody>
 
-    <tbody>
+    {{#each dataset}}
+
+    <tr>
+        <td scope="row">{{this.breakfast}}</td>
+        <td scope="row">{{this.lunch}}</td>
+        <td scope="row">{{this.dinner}}</td>
+        <td scope="row">{{this.distanceRan}}</td>
+        <td scope="row"> </td>
+        <td scope="row"> </td>
+        <td scope="row">{{this.date}}</td>
+
         
-    </tbody>
+    </tr>
+
+    {{/each}}
+
     
+  </tbody>
 </table>
+
+<a class="btn btn-secondary" href="/trackers/add">Create new Day Track </a>
 
 </div>

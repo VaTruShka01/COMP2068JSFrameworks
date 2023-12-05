@@ -1,5 +1,5 @@
 const configurations = {
-    'db': 'mongodb+srv://admin:SecurePassword01@student.h3dq182.mongodb.net/'
+    'db': 'mongodb+srv://admin:securePassword01@well.quoyb9o.mongodb.net/'
 }
 
 module.exports = configurations

@@ -6,6 +6,12 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var trackersRouter = require('./routes/tracker');
+
+//export libraries
+
+var mongoose = require('mongoose')
+var config = require('./config/globals')
 
 var app = express();
 
@@ -21,6 +27,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/trackers', trackersRouter);
+
+
+//configure mongoose
+
+mongoose
+.connect(config.db, {useNewUrlParser: true, useUnifiedTopology: true}) //connect
+.then((message) => {console.log("Connected Successfully!")})         //do after
+.catch((err) => {console.log("ERROR WHILE CONNECTING " + err)})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

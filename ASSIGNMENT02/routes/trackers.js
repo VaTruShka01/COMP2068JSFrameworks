@@ -4,13 +4,21 @@ const Tracker = require('../models/tracker');
 
 
 
+// add reusable middleware function to inject it in our handlers below that need authorization
+function IsLoggedIn(req,res,next) {
+  if (req.isAuthenticated()) {
+      return next();
+  }
+  res.redirect('/login');
+}
 
 router.get('/', async (req, res, next) => {
     try {
         const trackers = await Tracker.find().exec();
         res.render('trackers/index', {
             title: "Tracker",
-            dataset: trackers
+            dataset: trackers,
+            user: req.user
         });
     } catch (err) {
         console.error(err);
@@ -18,11 +26,11 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.get('/add', (req,res,next) => {
-    res.render('trackers/add', {title: "Add new day track"})
+router.get('/add', IsLoggedIn, (req,res,next) => {
+    res.render('trackers/add', {title: "Add new day track", user: req.user})
 });
 
-router.post('/add', (req, res, next) => {
+router.post('/add', IsLoggedIn, (req, res, next) => {
     const { breakfast, lunch, dinner, distanceRan, date, caloriesAte } = req.body;
 
     const newTrack = new Tracker({
@@ -43,7 +51,7 @@ router.post('/add', (req, res, next) => {
         });
 });
 
-router.get('/delete/:_id', async (req, res, next) => {
+router.get('/delete/:_id', IsLoggedIn, async (req, res, next) => {
     let trackerId = req.params._id;
 
     try{
@@ -63,7 +71,7 @@ router.get('/delete/:_id', async (req, res, next) => {
 
 
 
-router.get('/edit/:_id', async (req, res, next) => {
+router.get('/edit/:_id', IsLoggedIn, async (req, res, next) => {
   try {
     const trackerId = req.params._id;
     const tracker = await Tracker.findById(trackerId).exec();
@@ -71,7 +79,8 @@ router.get('/edit/:_id', async (req, res, next) => {
 
     res.render('trackers/edit', {
       title: "Edit Day Track",
-      tracker: tracker
+      tracker: tracker,
+      user: req.user
     });
   } catch (err) {
     console.error(err);

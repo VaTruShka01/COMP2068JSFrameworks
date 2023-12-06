@@ -1,8 +1,18 @@
+<style>
+  footer{
+    visibility: hidden;
+  }
+</style>
+
+
 <h1 class="text-center">{{title}}</h1>
 <div>
+
+{{#if user}}
 <div class="d-flex justify-content-center">
 <a class="btn btn-secondary" href="/trackers/add">Create new Day Track </a>
 </div>
+{{/if}}
 
 <table class="table table-dark table-hover m-3">
   <thead>
@@ -29,12 +39,16 @@
         <td scope="row">{{this.dinner}}</td>
         <td scope="row">{{this.distanceRan}}</td>
         <td scope="row">{{this.caloriesAte}} </td>
-        <td scope="row"> </td>
+        <td scope="row"></td>
         <td scope="row">{{this.date}}</td>
+
+       {{#if ../user}} 
         <td>
             <a class="btn btn-secondary m-1" href="/trackers/edit/{{this._id}}">Edit</a>
             <a class="btn btn-danger m-1" onclick="return confirmDeletion()" href="/trackers/delete/{{this._id}}">Delete</a>
         </td>
+
+      {{/if}}
         
     </tr>
 

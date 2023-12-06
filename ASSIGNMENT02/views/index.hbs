@@ -3,7 +3,14 @@
         <h1>Welcome to Calories and Workout Tracker</h1>
         <p>Track your calories, manage your diet, and stay fit with our advanced workout tracking features. Start your
             fitness journey today!</p>
+
+
+        {{#if user}}
         <a href="/trackers" class="cta-button">Get Started</a>
+        {{else}}
+        <a href="/login" class="cta-button">Login</a>
+        {{/if}}
+
     </div>
 
     <style>

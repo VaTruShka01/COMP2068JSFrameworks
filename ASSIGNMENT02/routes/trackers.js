@@ -2,6 +2,9 @@ var express = require("express");
 var router = express.Router();
 const Tracker = require('../models/tracker');
 
+
+
+
 router.get('/', async (req, res, next) => {
     try {
         const trackers = await Tracker.find().exec();
@@ -20,14 +23,15 @@ router.get('/add', (req,res,next) => {
 });
 
 router.post('/add', (req, res, next) => {
-    const { breakfast, lunch, dinner, distanceRan, date } = req.body;
+    const { breakfast, lunch, dinner, distanceRan, date, caloriesAte } = req.body;
 
     const newTrack = new Tracker({
         breakfast: breakfast.trim(),
         lunch: lunch.trim(),
         dinner: dinner.trim(),
-        distanceRan: Number(distanceRan),
-        date
+        distanceRan: distanceRan,
+        date,
+        caloriesAte
     });
 
     newTrack.save()
@@ -78,14 +82,15 @@ router.get('/edit/:_id', async (req, res, next) => {
 router.post('/edit/:_id', async (req, res, next) => {
   try {
     const trackerId = req.params._id;
-    const { breakfast, lunch, dinner, distanceRan, date } = req.body;
+    const { breakfast, lunch, dinner, distanceRan, date, caloriesAte } = req.body;
 
     const updatedTracker = await Tracker.findByIdAndUpdate(trackerId, {
       breakfast: breakfast.trim(),
       lunch: lunch.trim(),
       dinner: dinner.trim(),
       distanceRan: distanceRan,
-      date
+      date,
+      caloriesAte
     }, { new: true });
 
     res.redirect('/trackers'); 

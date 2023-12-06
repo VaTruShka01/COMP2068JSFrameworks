@@ -1,0 +1,91 @@
+
+<style>
+  footer{
+    visibility: hidden;
+  }
+</style>
+
+<h1 class="text-center">
+  Register
+</h1>
+<form method="post" class="container-xl p-4">
+  <fieldset class="form-group mb-3">
+    <label for="username" class="form-label">
+      Username:
+    </label>
+    <input
+      name="username"
+      id="username"
+      required
+      type="email"
+      class="form-control"
+      placeholder="email@email.com"
+    />
+  </fieldset>
+  <fieldset class="form-group mb-3">
+    <label for="password" class="form-label">
+      Password:
+    </label>
+    <input
+      name="password"
+      id="password"
+      type="password"
+      class="form-control"
+      required
+      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+    />
+  </fieldset>
+
+    <fieldset class="form-group mb-3">
+    <label for="height" class="form-label">
+      Height (cm)
+    </label>
+    <input
+      name="height"
+      id="height"
+      required
+      type="number"
+      class="form-control"
+    />
+  </fieldset>
+
+<fieldset class="form-group mb-3">
+    <label for="weight" class="form-label">
+      Weight (kg)
+    </label>
+    <input
+      name="weight"
+      id="weight"
+      required
+      type="number"
+      class="form-control"
+
+    />
+  </fieldset>
+
+  <fieldset class="form-group mb-3">
+    <label for="age" class="form-label">
+      Age
+    </label>
+    <input
+      name="sex"
+      id="sex"
+      required
+      type="number"
+      class="form-control"
+    />
+  </fieldset>
+
+
+  </fieldset>
+  <fieldset class="form-group mb-3">
+    <button class="btn btn-info">
+      Register
+    </button>
+    <hr />
+    Already have an account?
+    <a href="/login" title="Login">
+      Login
+    </a>
+  </fieldset>
+</form>

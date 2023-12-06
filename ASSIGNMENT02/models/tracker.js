@@ -27,7 +27,7 @@ const schemaDefinition = {
 
     caloriesAte: {
         type: Number,
-        required: false
+        required: true
     },
 
     caloriesBurnt: {

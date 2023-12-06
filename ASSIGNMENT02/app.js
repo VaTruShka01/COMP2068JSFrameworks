@@ -11,7 +11,11 @@ var trackersRouter = require('./routes/trackers');
 //export libraries
 
 var mongoose = require('mongoose')
-var config = require('./config/globals')
+var config = require('./config/globals');
+const session  = require('express-session');
+const passport = require('passport');
+
+const User = require('./models/user');
 
 var app = express();
 
@@ -24,6 +28,25 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(session({
+  secret: "fall2023jsFrameworks",
+  resave: false,
+  saveUninitialized: false
+}
+));
+
+app.use(passport.initialize());
+app.use(passport.session())
+
+passport.use(User.createStrategy());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

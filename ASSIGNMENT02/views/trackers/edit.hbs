@@ -1,4 +1,4 @@
-<h1>{{title}}</h1>
+<h1 class="text-center">{{title}}</h1>
 
 <form method="post" class="mb-3">
 
@@ -14,6 +14,10 @@
     <fieldset class="mb-3">
         <label for="dinner" class="form-label">What did you eat for Dinner? 🥗</label>
         <input name="dinner" id="dinner" type="text" value="{{tracker.dinner}}" class="form-control" required>
+    </fieldset>
+    <fieldset class="mb-3">
+        <label for="caloriesAte" class="form-label">Total Calories you ate 🍩</label>
+        <input name="caloriesAte" id="caloriesAte" value="{{tracker.caloriesAte}}" type="number" class="form-control" required>
     </fieldset>
    <fieldset class="mb-3">
         <label for="date" class="form-label">Date 📅</label>

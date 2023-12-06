@@ -1,11 +1,21 @@
+
+
+
 body {
   background: linear-gradient( rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65) ), url('../images/medical-background-36j645gjgq37ft5z.jpg');
   background-repeat: no-repeat;
   background-position: inherit;
   background-size: cover;
   color: white;
+
+  min-height: 100vh;
 }
 
+body footer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
 
 
 

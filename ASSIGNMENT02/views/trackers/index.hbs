@@ -1,16 +1,21 @@
 <h1>{{title}}</h1>
 <div>
 
-<table class="table table-dark table-hover">
+<a class="btn btn-secondary" href="/trackers/add">Create new Day Track </a>
+
+
+<table class="table table-dark table-hover m-3">
   <thead>
     <tr>
       <th scope="col">Breakfast 🥞</th>
       <th scope="col">Lunch 🍔</th>
       <th scope="col">Dinner 🥗</th>
-      <th scope="col">Distance ran 🏃</th>
+      <th scope="col">Distance Ran (km) 🏃</th>
       <th scope="col">Calories Ate 😋</th>
       <th scope="col">Calories Burnt 🏋️</th>
       <th scope="col">Date 📅</th>
+      <th scope="col"></th>
+
       
     </tr>
   </thead>
@@ -26,7 +31,10 @@
         <td scope="row"> </td>
         <td scope="row"> </td>
         <td scope="row">{{this.date}}</td>
-
+        <td>
+            <a class="btn btn-secondary m-1" href="/trackers/edit/{{this._id}}">Edit</a>
+            <a class="btn btn-danger m-1" onclick="return confirmDeletion()" href="/trackers/delete/{{this._id}}">Delete</a>
+        </td>
         
     </tr>
 
@@ -36,6 +44,5 @@
   </tbody>
 </table>
 
-<a class="btn btn-secondary" href="/trackers/add">Create new Day Track </a>
 
 </div>

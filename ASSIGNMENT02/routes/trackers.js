@@ -39,5 +39,61 @@ router.post('/add', (req, res, next) => {
         });
 });
 
+router.get('/delete/:_id', async (req, res, next) => {
+    let trackerId = req.params._id;
+
+    try{
+        const deletedTracker = await Tracker.findByIdAndDelete(trackerId);
+        res.redirect('/trackers');
+
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+})
+
+
+
+
+
+
+
+router.get('/edit/:_id', async (req, res, next) => {
+  try {
+    const trackerId = req.params._id;
+    const tracker = await Tracker.findById(trackerId).exec();
+
+
+    res.render('trackers/edit', {
+      title: "Edit Day Track",
+      tracker: tracker
+    });
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+
+router.post('/edit/:_id', async (req, res, next) => {
+  try {
+    const trackerId = req.params._id;
+    const { breakfast, lunch, dinner, distanceRan, date } = req.body;
+
+    const updatedTracker = await Tracker.findByIdAndUpdate(trackerId, {
+      breakfast: breakfast.trim(),
+      lunch: lunch.trim(),
+      dinner: dinner.trim(),
+      distanceRan: distanceRan,
+      date
+    }, { new: true });
+
+    res.redirect('/trackers'); 
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+
 
 module.exports = router;
